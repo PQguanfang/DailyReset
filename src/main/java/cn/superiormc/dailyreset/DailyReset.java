@@ -20,6 +20,11 @@ public final class DailyReset extends JavaPlugin {
     public static Map<Player, ZonedDateTime> dataMap;
 
     @Override
+    public void onLoad() {
+        saveDefaultConfig();
+    }
+
+    @Override
     public void onEnable() {
         instance = this;
         Events();
