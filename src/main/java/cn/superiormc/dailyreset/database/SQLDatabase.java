@@ -70,8 +70,9 @@ public class SQLDatabase {
                 withHour(Settings.GetResetHour()).
                 withMinute(Settings.GetResetMinute()).
                 withSecond(Settings.GetResetSecond());
+        Bukkit.getConsoleSender().sendMessage("" + dateTime + "    " + dateTime.getHour());
         sqlManager.createInsert("dailyreset")
-                .setColumnNames(player.getUniqueId().toString(), "year", "month", "day", "hour", "minute", "second")
+                .setColumnNames("uuid", "year", "month", "day", "hour", "minute", "second")
                 .setParams(player.getUniqueId().toString(), dateTime.getYear(), dateTime.getMonthValue(), dateTime.getDayOfMonth(),
                         dateTime.getHour(), dateTime.getMinute(), dateTime.getSecond())
                 .executeAsync();

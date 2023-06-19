@@ -15,7 +15,7 @@ public class ResetTask {
     public void StartTask(){
         boolean firstDone = false;
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (GetSQLTime(player).isAfter(GetNowingTime())) {
+            if (GetSQLTime(player).isBefore(GetNowingTime())) {
                 if (!firstDone) {
                     Actions.DoIt(Action.GetConsoleActions());
                 }
