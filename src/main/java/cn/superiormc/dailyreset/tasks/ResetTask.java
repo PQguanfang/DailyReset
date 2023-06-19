@@ -13,19 +13,20 @@ import java.time.ZonedDateTime;
 
 public class ResetTask {
     public void StartTask(){
-        boolean firstDone = false;
         for (Player player : Bukkit.getOnlinePlayers()) {
             if (GetSQLTime(player).isBefore(GetNowingTime())) {
-                if (!firstDone) {
-                    Actions.DoIt(Action.GetConsoleActions());
-                }
                 DailyReset.dataMap.replace(player, DailyReset.dataMap.get(player).plusDays(1L).
                         withHour(Settings.GetResetHour()).
                         withMinute(Settings.GetResetMinute()).
                         withSecond(Settings.GetResetSecond()));
-                firstDone = true;
+                Actions.DoIt(Action.GetPerPlayerActions(), player);
             }
-            Actions.DoIt(Action.GetPerPlayerActions(), player);
+        }
+        if (!DailyReset.intMap.contains(GetNowingTime()) && GetNowingTime().getHour() == Settings.GetResetHour() &&
+        GetNowingTime().getMinute() == Settings.GetResetMinute() &&
+        GetNowingTime().getSecond() == Settings.GetResetSecond()) {
+            Actions.DoIt(Action.GetConsoleActions());
+            DailyReset.intMap.add(GetNowingTime());
         }
     }
 

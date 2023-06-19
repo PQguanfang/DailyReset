@@ -23,7 +23,7 @@ database:
     password: 123456
 
 console-actions:
-  - 'none'
+  - 'message: Hello!'
 
 per-player-actions:
   - 'console_command: economylimit reset %player%'

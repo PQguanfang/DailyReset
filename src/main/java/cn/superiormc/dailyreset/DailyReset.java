@@ -11,7 +11,9 @@ import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitRunnable;
 
 import java.time.ZonedDateTime;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public final class DailyReset extends JavaPlugin {
@@ -19,6 +21,8 @@ public final class DailyReset extends JavaPlugin {
     public static JavaPlugin instance;
 
     public static Map<Player, ZonedDateTime> dataMap = new HashMap<>();
+
+    public static List<ZonedDateTime> intMap = new ArrayList<>();
 
     @Override
     public void onLoad() {
