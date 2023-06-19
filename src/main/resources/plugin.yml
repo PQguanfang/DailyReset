@@ -1,0 +1,4 @@
+name: DailyReset
+version: '${project.version}'
+main: cn.superiormc.dailyreset.DailyReset
+api-version: 1.13

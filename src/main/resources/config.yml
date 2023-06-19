@@ -1,0 +1,29 @@
+settings:
+  time-zone: "Asia/Shanghai"
+  reset-time:
+    hour: 0
+    minute: 0
+    second: 0
+  period-time: 20
+  auto-save: true
+
+database:
+  # If you want to use SQLLite, please replace this option to:
+  # jdbc:sqlite:%plugin_folder%/data.db
+  jdbc-url: 'jdbc:mysql://localhost:3306/dailyreset?useSSL=false&autoReconnect=true'
+  # If you are using old Minecraft version server, please replace this option to:
+  # com.mysql.jdbc.Driver
+  # If you want to use SQLLite, please replace this option to:
+  # org.sqlite.JDBC
+  jdbc-class: 'com.mysql.cj.jdbc.Driver'
+  # If you want to use SQLLite, set enabled option to false.
+  properties:
+    enabled: true
+    user: root
+    password: 123456
+
+console-actions:
+  - 'message: Hello!'
+
+per-player-actions:
+  - 'message: 1'
