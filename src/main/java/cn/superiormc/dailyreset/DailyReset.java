@@ -3,6 +3,7 @@ package cn.superiormc.dailyreset;
 import cn.superiormc.dailyreset.configs.Settings;
 import cn.superiormc.dailyreset.database.SQLDatabase;
 import cn.superiormc.dailyreset.events.JoinEvent;
+import cn.superiormc.dailyreset.events.QuitEvent;
 import cn.superiormc.dailyreset.tasks.ResetTask;
 import cn.superiormc.dailyreset.tasks.SaveTask;
 import org.bukkit.Bukkit;
@@ -46,6 +47,7 @@ public final class DailyReset extends JavaPlugin {
 
     public void Events() {
         Bukkit.getPluginManager().registerEvents(new JoinEvent(), this);
+        Bukkit.getPluginManager().registerEvents(new QuitEvent(), this);
     }
 
     public void Tasks() {

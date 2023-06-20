@@ -5,7 +5,7 @@ settings:
     minute: 0
     second: 0
   period-time: 20
-  auto-save: true
+  auto-save: false
 
 database:
   # If you want to use SQLLite, please replace this option to:
