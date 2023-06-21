@@ -70,7 +70,6 @@ public class SQLDatabase {
                 withHour(Settings.GetResetHour()).
                 withMinute(Settings.GetResetMinute()).
                 withSecond(Settings.GetResetSecond());
-        Bukkit.getConsoleSender().sendMessage("" + dateTime + "    " + dateTime.getHour());
         sqlManager.createInsert("dailyreset")
                 .setColumnNames("uuid", "year", "month", "day", "hour", "minute", "second")
                 .setParams(player.getUniqueId().toString(), dateTime.getYear(), dateTime.getMonthValue(), dateTime.getDayOfMonth(),
@@ -110,15 +109,10 @@ public class SQLDatabase {
 
     public static void UpdateData(Player player) {
         ZonedDateTime dateTime = DailyReset.dataMap.get(player);
-        sqlManager.createUpdate("dailyreset")
-                .addCondition("uuid = '"+ player.getUniqueId().toString() +"'")
-                .setColumnValues("year", dateTime.getYear())
-                .setColumnValues("month", dateTime.getMonthValue())
-                .setColumnValues("day", dateTime.getDayOfYear())
-                .setColumnValues("hour", dateTime.getHour())
-                .setColumnValues("minute", dateTime.getMinute())
-                .setColumnValues("second", dateTime.getSecond())
-                .build()
+        sqlManager.createReplace("dailyreset")
+                .setColumnNames("uuid", "year", "month", "day", "hour", "minute", "second")
+                .setParams(player.getUniqueId().toString(), dateTime.getYear(), dateTime.getMonthValue(), dateTime.getDayOfMonth(),
+                        dateTime.getHour(), dateTime.getMinute(), dateTime.getSecond())
                 .executeAsync();
     }
 

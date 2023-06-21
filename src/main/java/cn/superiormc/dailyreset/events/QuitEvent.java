@@ -7,7 +7,7 @@ import org.bukkit.event.player.PlayerQuitEvent;
 
 public class QuitEvent implements Listener {
     @EventHandler
-    public void JoinEvent(PlayerQuitEvent event) {
+    public void QuitEvent(PlayerQuitEvent event) {
         SQLDatabase.UpdateData(event.getPlayer());
     }
 }

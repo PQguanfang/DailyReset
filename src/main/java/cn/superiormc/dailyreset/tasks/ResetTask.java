@@ -14,8 +14,8 @@ import java.time.ZonedDateTime;
 public class ResetTask {
     public void StartTask(){
         for (Player player : Bukkit.getOnlinePlayers()) {
-            if (GetSQLTime(player).isBefore(GetNowingTime())) {
-                DailyReset.dataMap.replace(player, DailyReset.dataMap.get(player).plusDays(1L).
+            if (GetSQLTime(player) != null && GetSQLTime(player).isBefore(GetNowingTime())) {
+                DailyReset.dataMap.replace(player, GetNowingTime().plusDays(1L).
                         withHour(Settings.GetResetHour()).
                         withMinute(Settings.GetResetMinute()).
                         withSecond(Settings.GetResetSecond()));
